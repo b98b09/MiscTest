@@ -79,5 +79,20 @@ namespace MiscTest
             Debug.WriteLine($"Radio: {radioGroupBox.CheckedItem}");
             Debug.WriteLine($"Text: {radioGroupBox.CheckedItem?.Text}");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            radioGroupBox.ClearSelection();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            radioGroupBox.SelectNext();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            radioGroupBox.SelectPrevious();
+        }
     }
 }

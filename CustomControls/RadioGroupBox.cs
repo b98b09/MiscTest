@@ -71,6 +71,9 @@ namespace MiscTest.CustomControls
             panel.Controls.Add(rb);
         }
 
+
+
+
         /// <summary>
         /// 選択中のRadioButtonを取得する。
         /// </summary>
@@ -111,5 +114,90 @@ namespace MiscTest.CustomControls
                     .IndexOf(rb);
             }
         }
+
+
+
+        private RadioButton[] Items
+        {
+            get
+            {
+                return panel.Controls
+                    .OfType<RadioButton>()
+                    .ToArray();
+            }
+        }
+
+        private int CurrentIndex
+        {
+            get
+            {
+                var items = Items;
+                for (int i = 0; i < items.Length; i++)
+                {
+                    if (items[i].Checked)
+                        return i;
+                }
+                return -1; // 何も選ばれていない
+            }
+        }
+
+        public void SelectNext()
+        {
+            var items = Items;
+            int idx = CurrentIndex;
+
+            if (items.Length == 0)
+                return;
+
+            // 何も選ばれていない → 最初を選ぶ
+            if (idx < 0)
+            {
+                items[0].Checked = true;
+                return;
+            }
+
+            // 最後 → 何もしない（またはループさせるなら idx = -1 にする）
+            if (idx >= items.Length - 1)
+                return;
+
+            items[idx + 1].Checked = true;
+        }
+
+        public void SelectPrevious()
+        {
+            var items = Items;
+            int idx = CurrentIndex;
+
+            if (items.Length == 0)
+                return;
+
+            // 何も選ばれていない → 最後を選ぶ
+            if (idx < 0)
+            {
+                items[items.Length - 1].Checked = true;
+                return;
+            }
+
+            // 最初 → 何もしない（またはループさせるなら idx = items.Length にする）
+            if (idx == 0)
+                return;
+
+            items[idx - 1].Checked = true;
+        }
+
+
+
+        /// <summary>
+        /// 全てのRadioButtonの選択状態をクリアする。
+        /// </summary>
+        public void ClearSelection()
+        {
+            for (int i = 0; i < panel.Controls.Count; i++)
+            {
+                if (panel.Controls[i] is RadioButton rb)
+                    rb.Checked = false;
+            }
+        }
+
     }
 }

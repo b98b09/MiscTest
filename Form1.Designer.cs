@@ -48,7 +48,10 @@
             labelTab1Input = new Label();
             textBoxTab1Input = new TextBox();
             tabPage2 = new TabPage();
-            button1 = new Button();
+            buttonRgbPrev = new Button();
+            buttonRgbNext = new Button();
+            buttonRgbClear = new Button();
+            buttonRgbCheck = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -250,7 +253,10 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(button1);
+            tabPage2.Controls.Add(buttonRgbPrev);
+            tabPage2.Controls.Add(buttonRgbNext);
+            tabPage2.Controls.Add(buttonRgbClear);
+            tabPage2.Controls.Add(buttonRgbCheck);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -259,15 +265,45 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonRgbPrev
             // 
-            button1.Location = new Point(598, 112);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonRgbPrev.Location = new Point(642, 111);
+            buttonRgbPrev.Name = "buttonRgbPrev";
+            buttonRgbPrev.Size = new Size(94, 29);
+            buttonRgbPrev.TabIndex = 3;
+            buttonRgbPrev.Text = "Prev";
+            buttonRgbPrev.UseVisualStyleBackColor = true;
+            buttonRgbPrev.Click += button4_Click;
+            // 
+            // buttonRgbNext
+            // 
+            buttonRgbNext.Location = new Point(642, 76);
+            buttonRgbNext.Name = "buttonRgbNext";
+            buttonRgbNext.Size = new Size(94, 29);
+            buttonRgbNext.TabIndex = 2;
+            buttonRgbNext.Text = "Next";
+            buttonRgbNext.UseVisualStyleBackColor = true;
+            buttonRgbNext.Click += button3_Click;
+            // 
+            // buttonRgbClear
+            // 
+            buttonRgbClear.Location = new Point(642, 41);
+            buttonRgbClear.Name = "buttonRgbClear";
+            buttonRgbClear.Size = new Size(94, 29);
+            buttonRgbClear.TabIndex = 1;
+            buttonRgbClear.Text = "Clear";
+            buttonRgbClear.UseVisualStyleBackColor = true;
+            buttonRgbClear.Click += button2_Click;
+            // 
+            // buttonRgbCheck
+            // 
+            buttonRgbCheck.Location = new Point(642, 6);
+            buttonRgbCheck.Name = "buttonRgbCheck";
+            buttonRgbCheck.Size = new Size(94, 29);
+            buttonRgbCheck.TabIndex = 0;
+            buttonRgbCheck.Text = "Check";
+            buttonRgbCheck.UseVisualStyleBackColor = true;
+            buttonRgbCheck.Click += button1_Click;
             // 
             // Form1
             // 
@@ -320,6 +356,9 @@
         private TextBox textBoxTab1DecInput;
         private Label label1;
         private CheckBox checkBoxTab1AutoCopy;
-        private Button button1;
+        private Button buttonRgbCheck;
+        private Button buttonRgbClear;
+        private Button buttonRgbNext;
+        private Button buttonRgbPrev;
     }
 }
