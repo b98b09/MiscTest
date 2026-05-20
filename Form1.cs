@@ -5,9 +5,13 @@ namespace MiscTest
 {
     public partial class Form1 : Form
     {
+        private RadioGroupBox radioGroupBox;
+
         public Form1()
         {
             InitializeComponent();
+
+            radioGroupBox = new();
 
             // Tab1
             textBoxTab1Input.TextChanged += TextBoxTab1Input_TextChanged;
@@ -27,18 +31,18 @@ namespace MiscTest
 
         private void Form1_Load(object? sender, EventArgs e)
         {
-            RadioGroupBox rBox = new();
-            rBox.AddItem("Option 1", 1);
-            rBox.AddItem("Option 2", 2);
-            rBox.AddItem("Option 3", 3);
-            rBox.CheckedChanged += (sender, e) =>
+
+            radioGroupBox.AddItem("Option 1");
+            radioGroupBox.AddItem("Option 2");
+            radioGroupBox.AddItem("Option 3");
+            radioGroupBox.CheckedChanged += (sender, e) =>
             {
                 if (sender is RadioButton rb)
                 {
                     Debug.WriteLine($"Selected: {rb.Tag}, Checked: {rb.Checked}");
                 }
             };
-            tabPage2.Controls.Add(rBox);
+            tabPage2.Controls.Add(radioGroupBox);
         }
 
         private void Form1_Shown(object? sender, EventArgs e)
@@ -66,6 +70,14 @@ namespace MiscTest
             {
                 textBoxTab1DecInput.Text = output;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"Tag: {radioGroupBox.CheckedTag}");
+            Debug.WriteLine($"Index: {radioGroupBox.CheckedIndex}");
+            Debug.WriteLine($"Radio: {radioGroupBox.CheckedItem}");
+            Debug.WriteLine($"Text: {radioGroupBox.CheckedItem?.Text}");
         }
     }
 }

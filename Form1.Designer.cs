@@ -48,6 +48,7 @@
             labelTab1Input = new Label();
             textBoxTab1Input = new TextBox();
             tabPage2 = new TabPage();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -57,6 +58,7 @@
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // statusStrip1
@@ -248,13 +250,24 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button1);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(763, 367);
+            tabPage2.Size = new Size(744, 367);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(598, 112);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
@@ -280,6 +293,7 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -306,5 +320,6 @@
         private TextBox textBoxTab1DecInput;
         private Label label1;
         private CheckBox checkBoxTab1AutoCopy;
+        private Button button1;
     }
 }

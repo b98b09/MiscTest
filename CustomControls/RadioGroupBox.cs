@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MiscTest.CustomControls
 {
@@ -15,7 +16,7 @@ namespace MiscTest.CustomControls
         /// <summary>
         /// RadioButtonを縦に並べるためにFlowLayoutPanelを使用します。
         /// </summary>
-        private readonly FlowLayoutPanel flowLayoutPanel;
+        private readonly FlowLayoutPanel panel;
 
         /// <summary>
         /// RadioButtonのCheckChangedイベントを橋渡しするイベント。
@@ -23,11 +24,16 @@ namespace MiscTest.CustomControls
         public event EventHandler? CheckedChanged;
 
         /// <summary>
+        /// AddItemでTagが指定されない場合の自動採番用カウンタ。
+        /// </summary>
+        private int itemCounter = 0;
+
+        /// <summary>
         /// RadioButton専用のGroupBoxを作ります。
         /// </summary>
         public RadioGroupBox()
         {
-            flowLayoutPanel = new FlowLayoutPanel
+            panel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 AutoSize = true,
@@ -35,7 +41,7 @@ namespace MiscTest.CustomControls
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false
             };
-            Controls.Add(flowLayoutPanel);
+            Controls.Add(panel);
         }
 
         /// <summary>
@@ -45,6 +51,11 @@ namespace MiscTest.CustomControls
         /// <param name="tag"></param>
         public void AddItem(string text, object? tag = null)
         {
+            // Tag が指定されていない場合は自動採番
+            if (tag == null)
+            {
+                tag = itemCounter++;
+            }
             var rb = new RadioButton
             {
                 Text = text,
@@ -52,9 +63,53 @@ namespace MiscTest.CustomControls
             };
             rb.CheckedChanged += (s, e) =>
             {
-                CheckedChanged?.Invoke(s, e);
+                if ((s is RadioButton r) && (r.Checked))
+                {
+                    CheckedChanged?.Invoke(s, e);
+                }
             };
-            flowLayoutPanel.Controls.Add(rb);
+            panel.Controls.Add(rb);
+        }
+
+        /// <summary>
+        /// 選択中のRadioButtonを取得する。
+        /// </summary>
+        public RadioButton? CheckedItem
+        {
+            get
+            {
+                return panel.Controls
+                    .OfType<RadioButton>()
+                    .FirstOrDefault(rb => rb.Checked);
+            }
+        }
+
+        /// <summary>
+        /// 選択中のRadioButtonのTagを取得する。
+        /// </summary>
+        public object? CheckedTag
+        {
+            get
+            {
+                return CheckedItem?.Tag;
+            }
+        }
+
+        /// <summary>
+        /// 選択中のRadioButtonのインデックスを取得する。
+        /// </summary>
+        public int CheckedIndex
+        {
+            get
+            {
+                var rb = CheckedItem;
+                if (rb == null) return -1;
+
+                return panel.Controls
+                    .OfType<RadioButton>()
+                    .ToList()
+                    .IndexOf(rb);
+            }
         }
     }
 }
