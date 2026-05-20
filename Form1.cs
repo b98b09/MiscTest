@@ -31,10 +31,12 @@ namespace MiscTest
 
         private void Form1_Load(object? sender, EventArgs e)
         {
-
+            radioGroupBox.Text = "RadioGroup";
             radioGroupBox.AddItem("Option 1");
-            radioGroupBox.AddItem("Option 2");
-            radioGroupBox.AddItem("Option 3");
+            radioGroupBox.AddItem("Option ffffffffffffffffffff2");
+            radioGroupBox.AddItem("Option 3wfwfwe");
+            radioGroupBox.AddItem("Option 4");
+            radioGroupBox.AddItem("Option 5");
             radioGroupBox.CheckedChanged += (sender, e) =>
             {
                 if (sender is RadioButton rb)

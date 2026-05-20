@@ -33,6 +33,11 @@ namespace MiscTest.CustomControls
         /// </summary>
         public RadioGroupBox()
         {
+            // AutoSizeをオンにして高さを内容に合わせる
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            // FlowLayoutPanelを作成してGroupBoxに追加
             panel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -51,7 +56,7 @@ namespace MiscTest.CustomControls
         /// <param name="tag"></param>
         public void AddItem(string text, object? tag = null)
         {
-            // Tag が指定されていない場合は自動採番
+            // Tag自動連番
             if (tag == null)
             {
                 tag = itemCounter++;
@@ -61,6 +66,11 @@ namespace MiscTest.CustomControls
                 Text = text,
                 Tag = tag
             };
+
+            // AutoSizeをオフにして幅をテキストの幅に合わせる
+            rb.AutoSize = false;
+            rb.Width = TextRenderer.MeasureText(text, rb.Font).Width + 24;
+
             rb.CheckedChanged += (s, e) =>
             {
                 if ((s is RadioButton r) && (r.Checked))
