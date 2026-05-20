@@ -267,7 +267,7 @@
             // 
             // buttonRgbPrev
             // 
-            buttonRgbPrev.Location = new Point(642, 111);
+            buttonRgbPrev.Location = new Point(644, 76);
             buttonRgbPrev.Name = "buttonRgbPrev";
             buttonRgbPrev.Size = new Size(94, 29);
             buttonRgbPrev.TabIndex = 3;
@@ -277,7 +277,7 @@
             // 
             // buttonRgbNext
             // 
-            buttonRgbNext.Location = new Point(642, 76);
+            buttonRgbNext.Location = new Point(644, 111);
             buttonRgbNext.Name = "buttonRgbNext";
             buttonRgbNext.Size = new Size(94, 29);
             buttonRgbNext.TabIndex = 2;
