@@ -97,5 +97,12 @@ namespace MiscTest.CustomControls
         /// 全部OFF
         /// </summary>
         public void UncheckAll() => checkBoxes.ForEach(cb => cb.Checked = false);
+
+        /// <summary>
+        /// チェックボックスにアクセスできる。
+        /// </summary>
+        public IReadOnlyList<CheckBox> Items => checkBoxes;
+
+
     }
 }

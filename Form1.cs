@@ -58,6 +58,7 @@ namespace MiscTest
                     Debug.WriteLine($"Checked: {cb.Tag}, Checked: {cb.Checked}");
                 }
             };
+            checkGroupBox1.Items[2].Checked = true;
         }
 
         private void Form1_Shown(object? sender, EventArgs e)
@@ -113,6 +114,7 @@ namespace MiscTest
         private void button1_Click_1(object sender, EventArgs e)
         {
             checkGroupBox1.AddItem($"Check {checkGroupBox1.ItemCount + 1}");
+            
         }
 
         private void button2_Click_1(object sender, EventArgs e)
