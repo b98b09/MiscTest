@@ -45,6 +45,19 @@ namespace MiscTest
                 }
             };
             tabPage2.Controls.Add(radioGroupBox);
+
+            checkGroupBox1.Text = "CheckGroup";
+            checkGroupBox1.ToAutoSize(true);
+            checkGroupBox1.AddItem("Check 1");
+            checkGroupBox1.AddItem("Check 2");
+            checkGroupBox1.AddItem("Check 3");
+            checkGroupBox1.CheckedChanged += (sender, e) =>
+            {
+                if (sender is CheckBox cb)
+                {
+                    Debug.WriteLine($"Checked: {cb.Tag}, Checked: {cb.Checked}");
+                }
+            };
         }
 
         private void Form1_Shown(object? sender, EventArgs e)
@@ -95,6 +108,34 @@ namespace MiscTest
         private void button4_Click(object sender, EventArgs e)
         {
             radioGroupBox.SelectPrevious();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            checkGroupBox1.AddItem($"Check {checkGroupBox1.ItemCount + 1}");
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            switch (checkGroupBox1.FlowDirection)
+            {
+                case FlowDirection.TopDown:
+                    checkGroupBox1.FlowDirection = FlowDirection.LeftToRight;
+                    break;
+                case FlowDirection.LeftToRight:
+                    checkGroupBox1.FlowDirection = FlowDirection.TopDown;
+                    break;
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            checkGroupBox1.CheckAll();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            checkGroupBox1.UncheckAll();
         }
     }
 }

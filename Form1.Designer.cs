@@ -48,6 +48,11 @@
             labelTab1Input = new Label();
             textBoxTab1Input = new TextBox();
             tabPage2 = new TabPage();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            checkGroupBox1 = new MiscTest.CustomControls.CheckGroupBox();
             buttonRgbPrev = new Button();
             buttonRgbNext = new Button();
             buttonRgbClear = new Button();
@@ -253,6 +258,11 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(button4);
+            tabPage2.Controls.Add(button3);
+            tabPage2.Controls.Add(button2);
+            tabPage2.Controls.Add(button1);
+            tabPage2.Controls.Add(checkGroupBox1);
             tabPage2.Controls.Add(buttonRgbPrev);
             tabPage2.Controls.Add(buttonRgbNext);
             tabPage2.Controls.Add(buttonRgbClear);
@@ -265,9 +275,59 @@
             tabPage2.Text = "tabPage2";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            button4.Location = new Point(642, 282);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 8;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click_1;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(642, 247);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 7;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(642, 212);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 6;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(642, 177);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 5;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+            // checkGroupBox1
+            // 
+            checkGroupBox1.FlowDirection = FlowDirection.TopDown;
+            checkGroupBox1.Location = new Point(386, 6);
+            checkGroupBox1.Name = "checkGroupBox1";
+            checkGroupBox1.Size = new Size(250, 125);
+            checkGroupBox1.TabIndex = 4;
+            checkGroupBox1.TabStop = false;
+            checkGroupBox1.Text = "checkGroupBox1";
+            // 
             // buttonRgbPrev
             // 
-            buttonRgbPrev.Location = new Point(644, 76);
+            buttonRgbPrev.Location = new Point(642, 76);
             buttonRgbPrev.Name = "buttonRgbPrev";
             buttonRgbPrev.Size = new Size(94, 29);
             buttonRgbPrev.TabIndex = 3;
@@ -277,7 +337,7 @@
             // 
             // buttonRgbNext
             // 
-            buttonRgbNext.Location = new Point(644, 111);
+            buttonRgbNext.Location = new Point(642, 111);
             buttonRgbNext.Name = "buttonRgbNext";
             buttonRgbNext.Size = new Size(94, 29);
             buttonRgbNext.TabIndex = 2;
@@ -360,5 +420,10 @@
         private Button buttonRgbClear;
         private Button buttonRgbNext;
         private Button buttonRgbPrev;
+        private CustomControls.CheckGroupBox checkGroupBox1;
+        private Button button1;
+        private Button button2;
+        private Button button4;
+        private Button button3;
     }
 }
