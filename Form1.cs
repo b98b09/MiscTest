@@ -48,8 +48,8 @@ namespace MiscTest
 
             checkGroupBox1.Text = "CheckGroup";
             checkGroupBox1.ToAutoSize(true);
-            checkGroupBox1.AddItem("Check 1");
-            checkGroupBox1.AddItem("Check 2");
+            checkGroupBox1.AddItem("Check 1e");
+            checkGroupBox1.AddItem("Check 2fwfae", 2, true);
             checkGroupBox1.AddItem("Check 3");
             checkGroupBox1.CheckedChanged += (sender, e) =>
             {

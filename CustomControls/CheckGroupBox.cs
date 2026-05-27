@@ -18,22 +18,29 @@ namespace MiscTest.CustomControls
         /// </summary>
         public event EventHandler? CheckedChanged;
 
+        /// <summary>
+        /// 内部管理用のCheckBoxリスト。
+        /// </summary>
         private readonly List<CheckBox> checkBoxes = [];
 
-        public int ItemCount { get; internal set; }
+        /// <summary>
+        /// CheckBoxの数を取得する。
+        /// </summary>
+        public int ItemCount => checkBoxes.Count;
 
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public CheckGroupBox()
         {
-            // AutoSizeをオンにして高さを内容に合わせる
-            // this.AutoSize = true;
-            // this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            // FlowLayoutPanelを作成してGroupBoxに追加
-            Initialize();
+            PanelInitialize();
         }
 
-
-        private void Initialize()
+        /// <summary>
+        /// FlowLayoutPanelを初期化してGroupBoxに追加する。
+        /// </summary>
+        private void PanelInitialize()
         {
             panel.Dock = DockStyle.Fill;
             panel.FlowDirection = FlowDirection.TopDown;
@@ -42,30 +49,43 @@ namespace MiscTest.CustomControls
             this.Controls.Add(panel);
         }
 
+        /// <summary>
+        /// 自動サイズ調整を有効化。
+        /// </summary>
+        /// <param name="autoSize"></param>
         public void ToAutoSize(bool autoSize)
         {
             this.AutoSize = autoSize;
             this.AutoSizeMode = autoSize ? AutoSizeMode.GrowAndShrink : AutoSizeMode.GrowOnly;
         }
 
+        /// <summary>
+        /// パネルのFlowDirectionを設定する。
+        /// </summary>
         public FlowDirection FlowDirection
         { 
             get => panel.FlowDirection; 
             set => panel.FlowDirection = value;
         }
 
-        public void AddItem(string text, object? tag = null)
+        /// <summary>
+        /// CheckBoxを追加する。
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="tag"></param>
+        public void AddItem(string text, object? tag = null, bool chk = false)
         {
             // CheckBoxを作成してFlowLayoutPanelに追加
             var checkBox = new CheckBox
             {
                 Text = text,
-                Tag = tag
+                Tag = tag,
+                Checked = chk,
+                AutoSize = true
             };
             checkBox.CheckedChanged += (s, e) => CheckedChanged?.Invoke(s, e);
             checkBoxes.Add(checkBox);
             panel.Controls.Add(checkBox);
-            ItemCount++;
         }
 
         /// <summary>
