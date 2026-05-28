@@ -7,11 +7,23 @@ namespace MiscTest
     {
         private RadioGroupBox radioGroupBox;
 
+        private CheckGroupBox CheckGroupBox2;
+
         public Form1()
         {
             InitializeComponent();
 
             radioGroupBox = new();
+
+            CheckGroupBox2 = new(groupBox5);
+            CheckGroupBox2.ToAutoSize(true);
+            CheckGroupBox2.AddItem("Check 1");
+            CheckGroupBox2.AddItem("Check 1");
+            CheckGroupBox2.AddItem("Check 1");
+            CheckGroupBox2.AddItem("Check 1");
+            CheckGroupBox2.AddItem("Check 1");
+
+
 
             // Tab1
             textBoxTab1Input.TextChanged += TextBoxTab1Input_TextChanged;
@@ -114,7 +126,7 @@ namespace MiscTest
         private void button1_Click_1(object sender, EventArgs e)
         {
             checkGroupBox1.AddItem($"Check {checkGroupBox1.ItemCount + 1}");
-            
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -138,6 +150,16 @@ namespace MiscTest
         private void button4_Click_1(object sender, EventArgs e)
         {
             checkGroupBox1.UncheckAll();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            CheckGroupBox2.AddItem($"Check {CheckGroupBox2.ItemCount + 1}");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            CheckGroupBox2.DeleteItem(CheckGroupBox2.ItemCount-1);
         }
     }
 }

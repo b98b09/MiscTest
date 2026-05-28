@@ -57,6 +57,10 @@
             buttonRgbNext = new Button();
             buttonRgbClear = new Button();
             buttonRgbCheck = new Button();
+            tabPage3 = new TabPage();
+            button9 = new Button();
+            button8 = new Button();
+            groupBox5 = new GroupBox();
             menuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -67,6 +71,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // statusStrip1
@@ -128,6 +133,7 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -365,6 +371,48 @@
             buttonRgbCheck.UseVisualStyleBackColor = true;
             buttonRgbCheck.Click += button1_Click;
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(button9);
+            tabPage3.Controls.Add(button8);
+            tabPage3.Controls.Add(groupBox5);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(744, 367);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(295, 57);
+            button9.Name = "button9";
+            button9.Size = new Size(94, 29);
+            button9.TabIndex = 6;
+            button9.Text = "Delete";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(295, 22);
+            button8.Name = "button8";
+            button8.Size = new Size(94, 29);
+            button8.TabIndex = 5;
+            button8.Text = "Add";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Location = new Point(6, 9);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(259, 111);
+            groupBox5.TabIndex = 4;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "groupBox5";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -390,6 +438,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -425,5 +474,9 @@
         private Button button2;
         private Button button4;
         private Button button3;
+        private TabPage tabPage3;
+        private GroupBox groupBox5;
+        private Button button9;
+        private Button button8;
     }
 }

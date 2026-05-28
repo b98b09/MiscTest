@@ -16,7 +16,7 @@ namespace MiscTest.CustomControls
         /// <summary>
         /// RadioButtonを縦に並べるためにFlowLayoutPanelを使用します。
         /// </summary>
-        private readonly FlowLayoutPanel panel;
+        private readonly FlowLayoutPanel panel = new();
 
         /// <summary>
         /// RadioButtonのCheckChangedイベントを橋渡しするイベント。
@@ -33,10 +33,6 @@ namespace MiscTest.CustomControls
         /// </summary>
         public RadioGroupBox()
         {
-            // AutoSizeをオンにして高さを内容に合わせる
-            this.AutoSize = true;
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-
             // FlowLayoutPanelを作成してGroupBoxに追加
             panel = new FlowLayoutPanel
             {
@@ -48,6 +44,26 @@ namespace MiscTest.CustomControls
             };
             Controls.Add(panel);
         }
+
+        public void PanelInitialize()
+        {
+            panel.Dock = DockStyle.Fill;
+            panel.FlowDirection = FlowDirection.TopDown;
+            panel.WrapContents = false;
+            panel.AutoSize = true;
+            this.Controls.Add(panel);
+        }
+
+        public void SetLayout(FlowDirection flowDirection, bool wrapContents)
+        {
+            // AutoSizeをオンにして高さを内容に合わせる
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            panel.FlowDirection = flowDirection;
+            panel.WrapContents = wrapContents;
+        }
+
 
         /// <summary>
         /// RadioButtonを追加する。
