@@ -24,6 +24,8 @@ namespace MiscTest.CustomControls
         /// </summary>
         private readonly List<CheckBox> checkBoxes = [];
 
+        private readonly ContextMenuStrip menu;
+
 
         /// <summary>
         /// CheckBoxの数を取得する。
@@ -70,6 +72,20 @@ namespace MiscTest.CustomControls
 
             // 右クリックメニューなどの初期化もここで可能
             // InitializeContextMenu();
+
+            // 右クリックメニュー
+            menu = new ContextMenuStrip();
+            
+            menu.Items.Add("All Check", null, (s, e) => CheckAll());
+            menu.Items.Add("All Clear", null, (s, e) => UncheckAll());
+            menu.Items.Add("---", null, null); // 区切り
+            menu.Items.Add("Add", null, (s, e) => AddItem());
+            menu.Items.Add("Delete", null, (s, e) => DeleteItem());
+
+            // menu.Items.Add("Toggle All", null, (s, e) => ToggleAll());
+
+            this.ContextMenuStrip = menu;
+            panel.ContextMenuStrip = menu;
         }
 
 
@@ -111,8 +127,12 @@ namespace MiscTest.CustomControls
         /// </summary>
         /// <param name="text"></param>
         /// <param name="tag"></param>
-        public void AddItem(string text, object? tag = null, bool chk = false)
+        public void AddItem(string? text = null, object? tag = null, bool chk = false)
         {
+            if (text == null)
+            {
+                text = $"Check {checkBoxes.Count + 1}";
+            }
             // CheckBoxを作成してFlowLayoutPanelに追加
             var checkBox = new CheckBox
             {
@@ -126,8 +146,14 @@ namespace MiscTest.CustomControls
             panel.Controls.Add(checkBox);
         }
 
-        public void DeleteItem(int index)
+
+
+        public void DeleteItem(int index = -1)
         {
+            if (index == -1)
+            {
+                index = checkBoxes.Count - 1;
+            }
             if (index < 0 || index >= checkBoxes.Count)
                 return;
 

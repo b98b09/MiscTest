@@ -17,13 +17,10 @@ namespace MiscTest
 
             CheckGroupBox2 = new(groupBox5);
             CheckGroupBox2.ToAutoSize(true);
-            CheckGroupBox2.AddItem("Check 1");
-            CheckGroupBox2.AddItem("Check 1");
-            CheckGroupBox2.AddItem("Check 1");
-            CheckGroupBox2.AddItem("Check 1");
-            CheckGroupBox2.AddItem("Check 1");
-
-
+            CheckGroupBox2.AddItem();
+            CheckGroupBox2.AddItem();
+            CheckGroupBox2.Items[1].Text = "CHECK 2";
+            CheckGroupBox2.CheckedChanged += CheckGroupBox2_CheckedChanged;
 
             // Tab1
             textBoxTab1Input.TextChanged += TextBoxTab1Input_TextChanged;
@@ -37,9 +34,10 @@ namespace MiscTest
             this.FormClosed += Form1_FormClosed;
         }
 
-
-
-
+        private void CheckGroupBox2_CheckedChanged(object? sender, EventArgs e)
+        {
+            Debug.WriteLine($"Checked: {((CheckBox)sender!).Text}, Checked: {((CheckBox)sender!).Checked}");
+        }
 
         private void Form1_Load(object? sender, EventArgs e)
         {
