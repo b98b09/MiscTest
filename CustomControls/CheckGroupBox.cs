@@ -32,6 +32,11 @@ namespace MiscTest.CustomControls
         /// </summary>
         public int ItemCount => checkBoxes.Count;
 
+        /// <summary>
+        /// イベント無効化。
+        /// </summary>
+        private bool suppressEvents = false;
+
 
         /// <summary>
         /// コンストラクタ
@@ -81,6 +86,7 @@ namespace MiscTest.CustomControls
             menu.Items.Add("---", null, null); // 区切り
             menu.Items.Add("Add", null, (s, e) => AddItem());
             menu.Items.Add("Delete", null, (s, e) => DeleteItem());
+            menu.Items.Add("Toggle", null, (s, e) => ToggleAll());
 
             // menu.Items.Add("Toggle All", null, (s, e) => ToggleAll());
 
@@ -175,13 +181,51 @@ namespace MiscTest.CustomControls
         /// <summary>
         /// 全部ON
         /// </summary>
-        public void CheckAll() => checkBoxes.ForEach(cb => cb.Checked = true);
+        public void CheckAll()
+        {
+            if (checkBoxes.Count == 0) return;
+
+            suppressEvents = true;
+            foreach (var cb in checkBoxes)
+            {
+                cb.Checked = true;
+            }
+            suppressEvents = false;
+
+            CheckedChanged?.Invoke(checkBoxes[0], EventArgs.Empty);
+        }
 
         /// <summary>
         /// 全部OFF
         /// </summary>
-        public void UncheckAll() => checkBoxes.ForEach(cb => cb.Checked = false);
+        public void UncheckAll()
+        {
+            if (checkBoxes.Count == 0) return;
 
+            suppressEvents = true;
+            foreach (var cb in checkBoxes)
+            {
+                cb.Checked = false;
+            }
+            suppressEvents = false;
+
+            CheckedChanged?.Invoke(checkBoxes[0], EventArgs.Empty);
+        }
+
+        public void ToggleAll()
+        {
+            if (checkBoxes.Count == 0) return;
+
+            //suppressEvents = true;
+            foreach (var cb in checkBoxes)
+            {
+                cb.Checked = !cb.Checked;
+            }
+            //suppressEvents = false;
+
+            // CheckedChanged?.Invoke(checkBoxes[0], EventArgs.Empty);
+
+        }
         /// <summary>
         /// チェックボックスにアクセスできる。
         /// </summary>

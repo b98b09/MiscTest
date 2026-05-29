@@ -36,7 +36,11 @@ namespace MiscTest
 
         private void CheckGroupBox2_CheckedChanged(object? sender, EventArgs e)
         {
-            Debug.WriteLine($"Checked: {((CheckBox)sender!).Text}, Checked: {((CheckBox)sender!).Checked}");
+            if (sender is CheckBox cbox)
+            {
+                Debug.WriteLine($"Checked: {((CheckBox)sender!).Text}, Checked: {((CheckBox)sender!).Checked}");
+            }
+
         }
 
         private void Form1_Load(object? sender, EventArgs e)
@@ -159,5 +163,6 @@ namespace MiscTest
         {
             CheckGroupBox2.DeleteItem(CheckGroupBox2.ItemCount-1);
         }
+
     }
 }
